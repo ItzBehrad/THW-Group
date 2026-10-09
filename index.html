@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101014">
+  <meta name="description" content="THW Group is an independent game development group founded in 2022. Explore our projects, story, and updates.">
+  <title>THW Group — Dream It. Build It. Play It.</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0b0b10;
+      --panel: #13131b;
+      --panel-2: #191923;
+      --text: #f4f3fa;
+      --muted: #a7a5b8;
+      --line: rgba(255,255,255,.12);
+      --accent: #a78bfa;
+      --accent-2: #7c3aed;
+      --max: 1100px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; background:
+        radial-gradient(ellipse at 85% 0%, rgba(124,58,237,.18), transparent 35%),
+        radial-gradient(ellipse at 0% 35%, rgba(167,139,250,.08), transparent 30%),
+        var(--bg);
+      color: var(--text); font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: auto; }
+    header { position: sticky; top: 0; z-index: 10; background: rgba(11,11,16,.82); backdrop-filter: blur(16px); border-bottom: 1px solid var(--line); }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 74px; }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; letter-spacing: .04em; }
+    .logo { width: 42px; height: 42px; border: 1px solid rgba(255,255,255,.25); border-radius: 50%; display: grid; place-items: center; background: linear-gradient(145deg,#25232f,#09090d); box-shadow: 0 0 24px rgba(167,139,250,.16); font-size: 12px; }
+    .logo span { color: var(--accent); }
+    nav { display: flex; flex-wrap: wrap; gap: 22px; color: var(--muted); font-size: .94rem; }
+    nav a:hover, .text-link:hover { color: var(--accent); }
+    .hero { padding: 105px 0 90px; }
+    .eyebrow { color: var(--accent); text-transform: uppercase; letter-spacing: .18em; font-weight: 750; font-size: .78rem; }
+    h1 { font-size: clamp(3rem, 8vw, 6.5rem); line-height: .98; letter-spacing: -.065em; margin: 20px 0 24px; max-width: 900px; }
+    h1 .shine { background: linear-gradient(100deg,#fff 15%,#c4b5fd 60%,#8b5cf6); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .lead { color: var(--muted); font-size: clamp(1.05rem, 2.2vw, 1.3rem); max-width: 650px; margin: 0 0 30px; }
+    .buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--line); border-radius: 12px; padding: 12px 18px; font-weight: 700; transition: transform .2s, background .2s; }
+    .btn:hover { transform: translateY(-2px); }
+    .primary { background: var(--accent); border-color: var(--accent); color: #15111f; }
+    .secondary { background: rgba(255,255,255,.04); }
+    .hero-note { display: flex; align-items: center; gap: 10px; margin-top: 52px; color: var(--muted); font-size: .92rem; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: #a78bfa; box-shadow: 0 0 15px #a78bfa; }
+    section { padding: 76px 0; border-top: 1px solid var(--line); }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 28px; }
+    h2 { font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.1; letter-spacing: -.045em; margin: 8px 0 0; }
+    .section-head p { color: var(--muted); max-width: 420px; margin: 0; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .card { background: linear-gradient(150deg, rgba(255,255,255,.055), rgba(255,255,255,.018)); border: 1px solid var(--line); border-radius: 18px; padding: 25px; min-height: 210px; }
+    .icon { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 13px; background: rgba(167,139,250,.12); color: var(--accent); font-size: 1.25rem; margin-bottom: 22px; }
+    h3 { margin: 0 0 9px; font-size: 1.18rem; }
+    .card p, .body-copy { color: var(--muted); margin: 0; }
+    .about-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 35px; align-items: start; }
+    .quote { border-left: 3px solid var(--accent); padding: 6px 0 6px 22px; color: #ded8f7; font-size: 1.25rem; }
+    .timeline { display: grid; gap: 0; }
+    .timeline-item { display: grid; grid-template-columns: 110px 1fr; gap: 20px; padding: 19px 0; border-bottom: 1px solid var(--line); }
+    .year { color: var(--accent); font-weight: 800; }
+    .timeline-item p { margin: 3px 0 0; color: var(--muted); }
+    .project-note { font-size: .9rem; color: var(--muted); margin-top: 18px; }
+    .contact-box { display: flex; justify-content: space-between; align-items: center; gap: 25px; padding: clamp(25px,5vw,48px); border: 1px solid rgba(167,139,250,.28); background: linear-gradient(120deg,rgba(124,58,237,.16),rgba(255,255,255,.025)); border-radius: 22px; }
+    .contact-box p { color: var(--muted); margin-bottom: 0; }
+    footer { padding: 28px 0 36px; color: var(--muted); font-size: .9rem; }
+    .footer-row { display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
+    .small-links { display: flex; gap: 18px; flex-wrap: wrap; }
+    @media (max-width: 760px) {
+      .nav { align-items: flex-start; flex-direction: column; padding: 14px 0; gap: 10px; }
+      nav { gap: 14px; }
+      .hero { padding: 75px 0 60px; }
+      section { padding: 58px 0; }
+      .grid { grid-template-columns: 1fr; }
+      .section-head, .contact-box { align-items: flex-start; flex-direction: column; }
+      .about-layout { grid-template-columns: 1fr; }
+      .timeline-item { grid-template-columns: 76px 1fr; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#home" aria-label="THW Group home">
+        <span class="logo">T<span>H</span>W</span>
+        <span>THW <span style="color:var(--muted);font-weight:600">GROUP</span></span>
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#history">History</a>
+        <a href="#contact">Links</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home" style="border-top:0">
+      <div class="wrap">
+        <div class="eyebrow">Independent game development</div>
+        <h1><span class="shine">Dream It.<br>Build It. Play It.</span></h1>
+        <p class="lead">We’re THW Group — an independent game development group founded in 2022. We turn ideas into interactive experiences and keep learning with every project.</p>
+        <div class="buttons">
+          <a class="btn primary" href="#projects">Explore projects <span aria-hidden="true">&nbsp;↗</span></a>
+          <a class="btn secondary" href="https://github.com/ItzBehrad/THW-Group" target="_blank" rel="noopener noreferrer">Visit our GitHub</a>
+          <a class="btn secondary" href="https://www.roblox.com/communities/36009722/THW-Universe#!/about" target="_blank" rel="noopener noreferrer">Roblox community ↗</a>
+        </div>
+        <div class="hero-note"><span class="dot"></span><span>Ideas in progress. More updates as projects develop.</span></div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow">Who we are</div><h2>Built around imagination.</h2></div>
+          <p>Our focus is creating games, experimenting with ideas, and improving through making.</p>
+        </div>
+        <div class="about-layout">
+          <p class="body-copy">THW Group is an independent game development group established in 2022. This site is our home for the group’s story, projects, and future announcements. We believe every project starts with curiosity, grows through practice, and gets better with feedback.</p>
+          <div class="quote">“Dream It. Build It. Play It.”<br><span style="font-size:.88rem;color:var(--muted)">Our guiding motto</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow">What we make</div><h2>Projects</h2></div>
+          <p>A growing collection of interactive ideas. Details will be added here as each project is ready to share.</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <div class="icon" aria-hidden="true">▦</div>
+            <h3>Games & experiences</h3>
+            <p>Interactive worlds and gameplay experiments developed under the THW name.</p>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true">✦</div>
+            <h3>Creative experiments</h3>
+            <p>Testing concepts, mechanics, and new ways to make playing memorable.</p>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true">⌁</div>
+            <h3>Work in progress</h3>
+            <p>Projects evolve over time. Follow our official channels for confirmed releases and updates.</p>
+          </article>
+        </div>
+        <p class="project-note">Note: Project cards are general categories, not a claim that a particular game is currently released.</p>
+      </div>
+    </section>
+
+    <section id="history">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow">Our journey</div><h2>A work in progress.</h2></div>
+          <p>We’ll add dated milestones when they can be confirmed with records or links.</p>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item"><div class="year">2022</div><div><h3>THW Group founded</h3><p>The group’s starting point, as recorded in its official GitHub repository.</p></div></div>
+          <div class="timeline-item"><div class="year">Today</div><div><h3>Continuing to build</h3><p>Developing ideas and organizing project information in one place.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="contact-box">
+          <div><div class="eyebrow">Find us online</div><h2>Follow the work.</h2><p>Follow THW Group on TikTok, explore our Roblox community, or check our project repository on GitHub.</p></div>
+          <div class="buttons">
+            <a class="btn primary" href="https://www.tiktok.com/@thw.group" target="_blank" rel="noopener noreferrer">TikTok ↗</a>
+            <a class="btn secondary" href="https://www.roblox.com/communities/36009722/THW-Universe#!/about" target="_blank" rel="noopener noreferrer">Roblox ↗</a>
+            <a class="btn secondary" href="https://github.com/ItzBehrad/THW-Group" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <span>© <span id="year"></span> THW Group. All rights reserved.</span>
+      <span>Dream It. Build It. Play It.</span>
+    </div>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
